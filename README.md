@@ -10,3 +10,5 @@
 - comment : 주석 수정 등
 - norm : 몰라요 😢
 - refact : 리펙토링
+
+<img width="1465" height="1080" alt="image" src="https://github.com/user-attachments/assets/d4f6d12f-81b8-4689-a2f7-ebf6a69a0f6e" />
