@@ -1,9 +1,9 @@
 ---
-name: Feature request
-about: Suggest an idea for this project
-title: 'chore: 이슈 및 PR 템플릿 추가'
-labels: chore
-assignees: KimChaeWon12
+name: "✨ Feature"
+about: 새로운 기능 요청
+title: ''
+labels: feature
+assignees: ''
 
 ---
 
