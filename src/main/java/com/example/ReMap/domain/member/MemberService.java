@@ -51,8 +51,7 @@ public class MemberService {
         }
         member.setNickname(dto.getNickname());
 
-        // 전화번호·생년월일 업데이트
-        member.setPhone(dto.getPhone());
+        // 생년월일 업데이트
         member.setBirth(dto.getBirth());
 
         return member;
@@ -74,12 +73,6 @@ public class MemberService {
         return member;
     }
 
-    /* -------------------------- Delete (삭제) --------------------------- */
 
-    public void deleteMember(Long id) {
-        if (!memberRepository.existsById(id)) {
-            throw new EntityNotFoundException("회원을 찾을 수 없습니다. ID: " + id);
-        }
-        memberRepository.deleteById(id);
-    }
+
 }

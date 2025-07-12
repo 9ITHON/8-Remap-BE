@@ -21,7 +21,6 @@ public class Member {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Integer phone;
     private Long birth;
 
     @Column(unique = true)
@@ -43,6 +42,7 @@ public class Member {
 
     // 내가 쓴 댓글
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     @Builder.Default
     private List<Comment> comments = new ArrayList<>();
 }

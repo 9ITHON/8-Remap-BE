@@ -8,9 +8,6 @@ import lombok.Setter;
 @Setter
 public class UpdateMemberRequest {
 
-    @NotNull
-    @Min(value = 0, message = "전화번호는 0 이상의 숫자여야 합니다.")
-    private Integer phone;
 
     @NotNull(message = "생년월일을 입력해 주세요.")
     private Long birth;
