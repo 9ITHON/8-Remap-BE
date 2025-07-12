@@ -1,10 +1,11 @@
-package com.example.ReMap.domain.member;
+package com.example.ReMap.domain.member.entity;
 
+import com.example.ReMap.common.entity.BaseTimeEntity;
 import com.example.ReMap.domain.cast.Cast;
 import com.example.ReMap.domain.comment.Comment;
-import com.example.ReMap.domain.auth.entity.RefreshToken;
-import com.example.ReMap.domain.member.MemberType;
+import com.example.ReMap.domain.enums.Status;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -17,20 +18,21 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "member")
-public class Member {
+public class Member extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "member_id")
     private Long id;
 
     @Column(nullable = false)
     private String password;
 
-    private Integer phone;
-
+    @Column(nullable = false)
     private Long birth;
 
-    @Column(unique = true)
+    @Email
+    @Column(nullable = false)
     private String email;
 
     @Column(nullable = false, unique = true)
@@ -45,9 +47,10 @@ public class Member {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    @Builder.Default
     @Enumerated(EnumType.STRING)
-    @Column(name = "memberType")
-    private MemberType memberType = MemberType.GENERAL;
+    private Status status = Status.ACTIVE;
+
 
     // 관계 매핑
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)

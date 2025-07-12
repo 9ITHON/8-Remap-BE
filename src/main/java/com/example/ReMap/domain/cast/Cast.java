@@ -1,6 +1,6 @@
 package com.example.ReMap.domain.cast;
 
-import com.example.ReMap.domain.member.Member;
+import com.example.ReMap.domain.member.entity.Member;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
