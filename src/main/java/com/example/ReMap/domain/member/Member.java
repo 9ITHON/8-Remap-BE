@@ -1,11 +1,13 @@
 package com.example.ReMap.domain.member;
 
-import com.example.ReMap.domain.auth.entity.RefreshToken;
 import com.example.ReMap.domain.cast.Cast;
 import com.example.ReMap.domain.comment.Comment;
+import com.example.ReMap.domain.auth.entity.RefreshToken;
+import com.example.ReMap.domain.member.MemberType;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,13 +18,18 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "member_id", nullable = false, unique = true)
-    private String memberId;
-
+    @Column(nullable = false)
     private String password;
+
     private Integer phone;
+
     private Long birth;
+
+    @Column(unique = true)
     private String email;
+
+    @Column(nullable = false, unique = true)
+    private String nickname;
 
     @Column(name = "inactive_date")
     private LocalDateTime inactiveDate;
@@ -34,24 +41,41 @@ public class Member {
     private LocalDateTime updatedAt;
 
     @Enumerated(EnumType.STRING)
-    private MemberType memberType;
+    @Column(name = "memberType")
+    private MemberType memberType = MemberType.GENERAL;
 
-    // 관계
-    @OneToMany(mappedBy = "member")
-    private List<Cast> casts;
+    // 관계 매핑
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Cast> casts = new ArrayList<>();
 
-    @OneToMany(mappedBy = "member")
-    private List<Comment> comments;
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> comments = new ArrayList<>();
 
-    @OneToOne(mappedBy = "member")
-    private RefreshToken refreshToken;
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<RefreshToken> refreshTokens = new ArrayList<>();
+
+    // 기본 생성자
+    public Member() {}
+
+    // 생성자
+    public Member(String password, Integer phone, Long birth, String email, String nickname,
+                  LocalDateTime inactiveDate, LocalDateTime createdAt, LocalDateTime updatedAt,
+                  MemberType memberType) {
+        this.password = password;
+        this.phone = phone;
+        this.birth = birth;
+        this.email = email;
+        this.nickname = nickname;
+        this.inactiveDate = inactiveDate;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.memberType = memberType;
+    }
+
+    // Getter / Setter
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getPassword() {
@@ -84,6 +108,14 @@ public class Member {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public LocalDateTime getInactiveDate() {
@@ -134,12 +166,11 @@ public class Member {
         this.comments = comments;
     }
 
-    public RefreshToken getRefreshToken() {
-        return refreshToken;
+    public List<RefreshToken> getRefreshTokens() {
+        return refreshTokens;
     }
 
-    public void setRefreshToken(RefreshToken refreshToken) {
-        this.refreshToken = refreshToken;
+    public void setRefreshTokens(List<RefreshToken> refreshTokens) {
+        this.refreshTokens = refreshTokens;
     }
 }
-
