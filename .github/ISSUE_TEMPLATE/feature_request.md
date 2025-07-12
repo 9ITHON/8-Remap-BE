@@ -1,0 +1,31 @@
+---
+name: Feature request
+about: Suggest an idea for this project
+title: 'chore: 이슈 및 PR 템플릿 추가'
+labels: chore
+assignees: KimChaeWon12
+
+---
+
+---
+name: ✨ Feature
+about: 새로운 기능 요청
+title: ''
+labels: feat
+assignees: ''
+---
+
+## ✅ 기능 설명
+> 추가할 기능에 대해 간략하게 설명해주세요
+- 
+
+## ✏️ 작업 상세 내용
+> 체크박스 형태로 적어주세요
+- [ ] TODO
+- [ ] TODO
+
+## 🕙 작업 예상 시간
+<!-- 완료까지 얼마나 걸릴지 -->
+
+## 💬  기타 참고
+<!-- 쓸 내용 없으면 지워도 됩니당 -->
