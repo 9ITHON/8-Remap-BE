@@ -1,9 +1,9 @@
 ---
-name: Bug report
-about: Create a report to help us improve
-title: 'add: 버그 템프릿 추가'
-labels: chore
-assignees: KimChaeWon12
+name: "\U0001F41E Bug"
+about: 버그 제보
+title: ''
+labels: bug
+assignees: ''
 
 ---
 
