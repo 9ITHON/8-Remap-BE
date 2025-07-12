@@ -1,4 +1,4 @@
-package com.example.ReMap.web.comment;
+package com.example.ReMap.domain.comment;
 
 import com.example.ReMap.domain.comment.CommentService;
 import com.example.ReMap.domain.comment.dto.CommentResponse;
